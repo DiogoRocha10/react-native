@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     botaoDefault: {
-        width: "90%",
+        width: "40%",
         padding: 5,
         marginTop: 5
     }

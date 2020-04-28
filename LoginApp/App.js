@@ -20,14 +20,14 @@ export default function App() {
           options={{
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
             headerStyle: {
-              backgroundColor: '#f4511e',
+              backgroundColor:'#3AC330' ,
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
             headerShown: true,
-            title: "MENU",
+            title: "CONSUMO",
             headerTitleAlign: "center",
             headerLeft: null,
           }}
@@ -36,14 +36,36 @@ export default function App() {
           name="Login"
           component={Login}
           options={{
-            headerShown: false
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+            headerStyle: {
+              backgroundColor:'#3AC330' ,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            headerShown: true,
+            title: "LOGIN",
+            headerTitleAlign: "center",
+            headerLeft: null,
           }}
         />
         <Stack.Screen
           name="Resultado"
           component={Resultado}
           options={{
-            headerShown: false
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+            headerStyle: {
+              backgroundColor:'#3AC330' ,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            headerShown: true,
+            title: "RESULTADO",
+            headerTitleAlign: "center",
+            headerLeft: null,
           }}
 
         />

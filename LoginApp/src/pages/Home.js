@@ -1,30 +1,24 @@
-import React, { useState} from 'react'
-import { StyleSheet, Text, View, TextInput, Button} from 'react-native'
+import React, { useState }  from 'react'
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
 
 const Home = (props) => {
     const { navigation } = props
 
-    const [kilometragem, setKilometragem] = useState("")
+    const [km, setKm] = useState("")
     const [litros, setLitros] = useState("")
-    const [msg, setMsg] = useState("")
-
-    const getConsumo = () => {
-        let consumo = kilometragem / litros
-        if(consumo <= 4){
-            setMsg('E') 
-        }else if (consumo <= 8){
-            setMsg('D')
-        }else if (consumo <= 10){
-            setMsg('C')
-        }else if (consumo <= 12){
-            setMsg('B')
-        }else {
-            setMsg('A')
-        }
-    }
+    const [error, setError] = useState("")
 
     return (
-        <View>
+        <View style={styles.container}>
+            <Text style={styles.textStyle}>Informe os dados abaixo!</Text>
+
+            <TextInput
+                style={styles.caixaTexto}
+                placeholder="Kilometragem"
+                onChangeText={(valor) => setKm(valor)}
+                value={km}
+                keyboardType={'numeric'}
+            />
             <TextInput
                 style={styles.caixaTexto}
                 placeholder="Litros"
@@ -32,24 +26,24 @@ const Home = (props) => {
                 value={litros}
                 keyboardType={'numeric'}
             />
-            <TextInput
-                style={styles.caixaTexto}
-                placeholder="Kilometragem"
-                secureTextEntry={true}
-                onChangeText={(valor) => setKilometragem(valor)}
-                value={kilometragem}
-                keyboardType={'numeric'}
-            />
-            <Button
+
+            <Text style={styles.textError}>{error}</Text>
+
+            <View style={styles.botaoDefault}>
+              <Button
                 title="Calcular"
-                onPress={() => getConsumo(navigation.replace("Resultado"))}
-                color="green"
-            />
-            <Button
-                title="Logoff"
-                onPress={() => navigation.replace("Login")}
-                color="red"
-            />
+                onPress={() => {
+                  let isValid = !!km && !!litros
+                  if (!isValid) {
+                    setError('Dados Incorretos!')
+                    return
+                  }
+                  setError('')
+                  navigation.navigate("Resultado", {km, litros})
+                }}
+                color="#3AC330"
+              />
+            </View>
         </View>
     )
 }
@@ -57,22 +51,30 @@ const Home = (props) => {
 export default Home
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    caixaTexto: {
-        borderWidth: 1,
-        borderColor: 'gray',
-        width: "90%",
-        padding: 5,
-        marginTop: 5
-    },
-    botaoDefault: {
-        width: "90%",
-        padding: 5,
-        marginTop: 5
-    }
+  container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+  },
+  caixaTexto: {
+      borderWidth: 1,
+      borderColor: 'gray',
+      width: "75%",
+      padding: 5,
+      marginTop: 5
+  },
+  botaoDefault: {
+      marginTop: 25
+  },
+  textStyle:{
+    fontSize: 18,
+    margin: 20
+  },
+  textError:{
+    fontSize: 18,
+    margin: 20,
+    color: 'red',
+    alignItems: 'center',
+  }
 });
