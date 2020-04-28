@@ -7,6 +7,17 @@ const Resultado = (props) => {
     return (
         <View style={styles.container}>
             <Text>oi</Text>
+
+            <Button
+                title="Calcular Novamente"
+                onPress={() => navigation.replace("Home")}
+                color="green"
+            />
+            <Button
+                title="Logoff"
+                onPress={() => navigation.replace("Login")}
+                color="red"
+            />
         </View>
     )
 
@@ -19,5 +30,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    botaoDefault: {
+        width: "90%",
+        padding: 5,
+        marginTop: 5
     }
 })

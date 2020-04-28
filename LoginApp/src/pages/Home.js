@@ -43,9 +43,8 @@ const Home = (props) => {
             <Button
                 title="Calcular"
                 onPress={() => getConsumo(navigation.replace("Resultado"))}
-                color="red"
+                color="green"
             />
-
             <Button
                 title="Logoff"
                 onPress={() => navigation.replace("Login")}
@@ -72,6 +71,8 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     botaoDefault: {
+        width: "90%",
+        padding: 5,
         marginTop: 5
     }
 });
